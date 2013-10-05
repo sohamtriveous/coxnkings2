@@ -13,6 +13,8 @@ import com.coxnkings.android.utils.DateUtils;
 
 public class SecondActivity extends BaseVoiceActivity {
 
+	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		setContentView(R.layout.activity_second);
@@ -20,6 +22,8 @@ public class SecondActivity extends BaseVoiceActivity {
 
 		setHintTitle("Select location and date of travel");
 		setHintText("From Delhi to Bangalore on November 16");
+
+		
 	}
 
 	@Override
@@ -68,7 +72,8 @@ public class SecondActivity extends BaseVoiceActivity {
 		to.setText(VoicerecApplication.to);
 		date.setText(VoicerecApplication.date);
 
-		// now that the text has been displayed, wait for a while and then transition
+		// now that the text has been displayed, wait for a while and then
+		// transition
 		Handler h = new Handler();
 		h.postDelayed(new Runnable() {
 			@Override
