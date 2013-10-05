@@ -1,9 +1,14 @@
 package com.coxnkings.android.activity;
 
+import java.util.Locale;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.speech.tts.TextToSpeech;
+import android.speech.tts.TextToSpeech.OnInitListener;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
@@ -23,6 +28,8 @@ public abstract class BaseVoiceActivity extends Activity {
 
 	private static Object lock = new Object();
 
+	private static TextToSpeech myTTS = null;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		mMic = (ImageView) findViewById(R.id.voicerec_mic);
@@ -35,6 +42,16 @@ public abstract class BaseVoiceActivity extends Activity {
 				@Override
 				public void onClick(View v) {
 					startVoiceRecognition(prompt);
+				}
+			});
+		}
+
+		if (myTTS == null) {
+			myTTS = new TextToSpeech(this, new OnInitListener() {
+				@Override
+				public void onInit(int status) {
+					myTTS.setLanguage(Locale.US);
+					myTTS.speak(mTitle.getText().toString(), TextToSpeech.QUEUE_ADD, null);
 				}
 			});
 		}
@@ -88,7 +105,7 @@ public abstract class BaseVoiceActivity extends Activity {
 			}, mDelayInMillis);
 		} else {
 			mHintText.setVisibility(View.VISIBLE);
-			mHintText.setText("Incorrect entry, try again");
+			setHintTitle("Incorrect entry, try again");
 			negativeResult(command);
 		}
 	}
@@ -118,6 +135,14 @@ public abstract class BaseVoiceActivity extends Activity {
 	public void setHintTitle(String title) {
 		if (mTitle != null) {
 			mTitle.setText(title);
+			speak(title);
+		}
+	}
+
+	private void speak(String text) {
+		Log.d("Base", text);
+		if (myTTS != null) {
+			myTTS.speak(text, TextToSpeech.QUEUE_ADD, null);
 		}
 	}
 
