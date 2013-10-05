@@ -1,0 +1,68 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".FirstActivity" >
+
+    <EditText
+        android:id="@+id/from"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:focusable="false"
+        android:fontFamily="sans-serif-light"
+        android:hint="From"
+        android:textColor="#000000" />
+
+    <TextView
+        android:id="@+id/to_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:fontFamily="sans-serif-light"
+        android:text="-"
+        android:textColor="#000000"
+        android:textSize="30sp" />
+
+    <EditText
+        android:id="@+id/to"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp"
+        android:focusable="false"
+        android:fontFamily="sans-serif-light"
+        android:hint="To"
+        android:textColor="#000000" />
+
+    <EditText
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/from"
+        android:layout_alignRight="@id/to"
+        android:layout_below="@id/to_label"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:focusable="false"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center_horizontal"
+        android:hint="Date"
+        android:textColor="#000000" />
+
+    <include
+        android:layout_alignParentBottom="true"
+        layout="@layout/layout_voicerec" />
+
+</RelativeLayout>
